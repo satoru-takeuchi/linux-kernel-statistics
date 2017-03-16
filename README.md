@@ -9,3 +9,8 @@
 ![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/number_of_lines_of_each_subsystem_for_each_release.png "")
 ![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/number_of_line_increase_of_each_subsystem_for_each_release.png "")
 ![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/number_of_line_increase_of_each_subsystem_wituout_driver_for_each_release.png "")
+![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/the_amounts_of_code_under_drivers.png "")
+![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/new_driver_and_existing_driver.png "")
+![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/the_latest_stable_version_for_each_version.png "")
+![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/the_number_of_days_from_the_initial_release_to_the_latest_stable_release "")
+![](https://github.com/satoru-takeuchi/linux-kernel-statistics/blob/master/image/average_line_increase_for_each_stable_patch.png "")
