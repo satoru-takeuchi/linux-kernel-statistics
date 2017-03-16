@@ -4,7 +4,7 @@ for ((i=0;i<=10;i++)) ; do
     git checkout -fq v4.$i
     echo -ne "v4.${i}\t"
     for d in arch block crypto drivers fs init ipc kernel lib mm net security sound virt ; do
-	echo -ne "$(find $d -type f -name '*.[ch]' -exec wc -l {} \; | awk 'BEGIN{sum=0}{sum+=$1}END{print sum}')\t"
+	echo -ne "$(find $d -type f -name '*.[chS]' -exec wc -l {} \; | awk 'BEGIN{sum=0}{sum+=$1}END{print sum}')\t"
     done
     echo
 done
