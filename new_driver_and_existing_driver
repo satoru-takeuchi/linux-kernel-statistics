@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SRCDIR=~/src/linux
+cd $SRCDIR
+
+for ((i=1;i<=10;i++)) ; do
+    git checkout -fq v4.${i}
+    echo -ne "v4.${i}\t"
+    echo "$(git diff v4.$(($i-1))..v4.$i -- drivers | grep -A 1 -- '^--- /dev/null$' | sed -n -e 's/^+++ b\/\(.*\.[chS]\)$/\1/p' | xargs wc -l | tail -1 | awk '{print $1}')" 
+done
