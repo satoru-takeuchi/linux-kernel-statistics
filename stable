@@ -11,7 +11,8 @@ for ((i=12;i<=39;i++)) ; do
     BEFORE=$(git log --pretty=format:%at -1 v2.6.$i)
     AFTER=$(git log --pretty=format:%at -1 v2.6.$i.$LATEST)
     DAYS=$((($AFTER - $BEFORE)/24/3600))
-    echo "$DAYS"
+    echo -ne "$DAYS\t"
+    echo "$(git log --oneline v2.6.$i..v2.6.$i.$LATEST | wc -l)"
 done
 
 for ((i=0;i<=19;i++)) ; do
@@ -21,7 +22,8 @@ for ((i=0;i<=19;i++)) ; do
     BEFORE=$(git log --pretty=format:%at -1 v3.$i)
     AFTER=$(git log --pretty=format:%at -1 v3.$i.$LATEST)
     DAYS=$((($AFTER - $BEFORE)/24/3600))
-    echo "$DAYS"
+    echo -ne "$DAYS\t"
+    echo "$(git log --oneline v3.$i..v3.$i.$LATEST | wc -l)"
 done
 
 for ((i=0;i<=10;i++)) ; do
@@ -31,5 +33,6 @@ for ((i=0;i<=10;i++)) ; do
     BEFORE=$(git log --pretty=format:%at -1 v4.$i)
     AFTER=$(git log --pretty=format:%at -1 v4.$i.$LATEST)
     DAYS=$((($AFTER - $BEFORE)/24/3600))
-    echo "$DAYS"
+    echo -ne "$DAYS\t"
+    echo "$(git log --oneline v4.$i..v4.$i.$LATEST | wc -l)"
 done
