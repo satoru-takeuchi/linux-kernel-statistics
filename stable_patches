@@ -1,0 +1,41 @@
+#!/bin/bash
+
+SRCDIR=~/src/linux
+
+cd $SRCDIR
+
+for ((i=12;i<=39;i++)) ; do
+    LATEST=$(git tag | sed -n -e "s/v2\.6\.$i\.\([0-9]*\)$/\1/p" | sort -nr | head -1)
+    for ((j=1;j<$LATEST;j++)) ; do
+	echo -ne "v2.6.$i.$j\t"
+	if [ $j -eq 1 ] ; then
+	    git log --oneline v2.6.$i..v2.6.$i.1 | wc -l
+	else
+	    git log --oneline v2.6.$i.$(($j-1))..v2.6.$i.$j | wc -l
+	fi
+    done
+done
+
+for ((i=0;i<=19;i++)) ; do
+    LATEST=$(git tag | sed -n -e "s/v3\.$i\.\([0-9]*\)$/\1/p" | sort -nr | head -1)
+    for ((j=1;j<$LATEST;j++)) ; do
+	echo -ne "v3.$i.${LATEST}\t"
+	if [ $j -eq 1 ] ; then
+	    git log --oneline v3.$i..v3.$i.1 | wc -l
+	else
+	    git log --oneline v3.$i.$(($j-1))..v3.$i.$j | wc -l
+	fi
+    done
+done
+
+for ((i=0;i<=10;i++)) ; do
+    LATEST=$(git tag | sed -n -e "s/v4\.$i\.\([0-9]*\)$/\1/p" | sort -nr | head -1)
+    for ((j=1;j<$LATEST;j++)) ; do
+	echo -ne "v4.$i.${LATEST}\t"
+	if [ $j -eq 1 ] ; then
+	    git log --oneline v4.$i..v4.$i.1 | wc -l
+	else
+	    git log --oneline v4.$i.$(($j-1))..v4.$i.$j | wc -l
+	fi
+    done    
+done
