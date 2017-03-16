@@ -1,9 +1,12 @@
 #!/bin/bash
 
 OLDVERSION=v4.0
+SRCDIR=~/src/linux
+INPUTFILE=$(realpath rc_patches.src)
+cd $SRCDIR
 
 while read VERSION ; do
     echo -ne "${VERSION}\t"
     git log --oneline ${OLDVERSION}..${VERSION} | wc -l
     OLDVERSION=$VERSION
-done <~/practice/kernel_scale/rc_patches.src
+done <$INPUTFILE
