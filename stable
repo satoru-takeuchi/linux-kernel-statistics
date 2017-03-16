@@ -1,0 +1,35 @@
+#!/bin/bash
+
+SRCDIR=~/src/linux
+
+cd $SRCDIR
+
+for ((i=12;i<=39;i++)) ; do
+    echo -ne "v2.6.$i\t"
+    LATEST=$(git tag | sed -n -e "s/v2\.6\.$i\.\([0-9]*\)$/\1/p" | sort -nr | head -1)
+    echo -ne "${LATEST}\t"
+    BEFORE=$(git log --pretty=format:%at -1 v2.6.$i)
+    AFTER=$(git log --pretty=format:%at -1 v2.6.$i.$LATEST)
+    DAYS=$((($AFTER - $BEFORE)/24/3600))
+    echo "$DAYS"
+done
+
+for ((i=0;i<=19;i++)) ; do
+    echo -ne "v3.$i\t"
+    LATEST=$(git tag | sed -n -e "s/v3\.$i\.\([0-9]*\)$/\1/p" | sort -nr | head -1)
+    echo -ne "$LATEST\t"
+    BEFORE=$(git log --pretty=format:%at -1 v3.$i)
+    AFTER=$(git log --pretty=format:%at -1 v3.$i.$LATEST)
+    DAYS=$((($AFTER - $BEFORE)/24/3600))
+    echo "$DAYS"
+done
+
+for ((i=0;i<=10;i++)) ; do
+    echo -ne "v4.$i\t"
+    LATEST=$(git tag | sed -n -e "s/v4\.$i\.\([0-9]*\)$/\1/p" | sort -nr | head -1)
+    echo -ne "$LATEST\t"
+    BEFORE=$(git log --pretty=format:%at -1 v4.$i)
+    AFTER=$(git log --pretty=format:%at -1 v4.$i.$LATEST)
+    DAYS=$((($AFTER - $BEFORE)/24/3600))
+    echo "$DAYS"
+done
